@@ -15,3 +15,13 @@ X[N_per_class:,:] = X[N_per_class:,:] + 2*np.ones((N_per_class,D))
 
 # labels: first N_per_class are 0, last N_per_class are 1
 T = np.array([0]*N_per_class + [1]*N_per_class)
+
+# add a column of ones
+ones = np.ones((N, 1))
+Xb = np.concatenate((ones, X), axis=1)
+
+# randomly initialize the weights
+w = np.random.randn(D + 1)
+
+# calculate the model output
+z = Xb.dot(w)
