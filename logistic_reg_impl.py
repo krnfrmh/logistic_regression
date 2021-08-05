@@ -25,3 +25,8 @@ w = np.random.randn(D + 1)
 
 # calculate the model output
 z = Xb.dot(w)
+
+def sigmoid(z):
+    return 1/(1 + np.exp(-z))
+
+Y = sigmoid(z)
