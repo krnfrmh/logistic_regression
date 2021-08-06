@@ -30,3 +30,13 @@ def sigmoid(z):
     return 1/(1 + np.exp(-z))
 
 Y = sigmoid(z)
+
+# calculate the cross-entropy error
+def cross_entropy(T, Y):
+    E = 0
+    for i in range(len(T)):
+        if T[i] == 1:
+            E -= np.log(Y[i])
+        else:
+            E -= np.log(1 - Y[i])
+    return E
