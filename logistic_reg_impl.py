@@ -41,6 +41,14 @@ def cross_entropy(T, Y):
             E -= np.log(1 - Y[i])
     return E
 
+def grad_descent(Y, w):
+    w += learning_rate * Xb.T.dot(T - Y)
+    return w
+    
+def grad_descent_with_regularization(Y, w):
+    w += learning_rate * (Xb.T.dot(T - Y) - 0.1*w)
+    return w
+
 # let's do gradient descent 100 times
 learning_rate = 0.1
 for i in range(100):
@@ -48,8 +56,7 @@ for i in range(100):
         print(cross_entropy(T, Y))
 
     # gradient descent weight udpate
-    w += learning_rate * Xb.T.dot(T - Y)
+    w = grad_descent(Y, w)
 
     # recalculate Y
     Y = sigmoid(Xb.dot(w))
-    
