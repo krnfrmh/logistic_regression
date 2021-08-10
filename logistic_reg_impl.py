@@ -60,3 +60,11 @@ for i in range(100):
 
     # recalculate Y
     Y = sigmoid(Xb.dot(w))
+
+
+# plot the data and separating line
+plt.scatter(X[:,0], X[:,1], c=T, s=100, alpha=0.5)
+x_axis = np.linspace(-6, 6, 100)
+y_axis = -(w[0] + x_axis*w[1]) / w[2]
+plt.plot(x_axis, y_axis)
+plt.show()
