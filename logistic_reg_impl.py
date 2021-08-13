@@ -45,11 +45,16 @@ def grad_descent(Y, w):
     w += learning_rate * Xb.T.dot(T - Y)
     return w
     
-def grad_descent_with_regularization(Y, w):
-    w += learning_rate * (Xb.T.dot(T - Y) - 0.1*w)
+def grad_descent_with_reg(Y, w):
+    w += learning_rate * (Xb.T.dot(T - Y) - 0.1 * w)
+    return w
+
+def grad_descent_with_l1_reg(Y, w, l1):
+    w -= learning_rate * (Xb.T.dot(Y - T) + l1 * np.sign(w))
     return w
 
 # let's do gradient descent 100 times
+l1 = 2 # try different values
 learning_rate = 0.1
 for i in range(100):
     if i % 10 == 0:
